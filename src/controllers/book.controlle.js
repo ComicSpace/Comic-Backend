@@ -1,15 +1,135 @@
 const bookService = require("../services/book.service");
 
 class BookController {
-    async create (req, res) {
-        const newController = await bookService.createNewBook(req.body)
-     
-        return res.status(200).send({
-         success: true,
-         message: "Book created successfully",
-         data: newController
-        })
-       }
+    async createBook(req, res) {
+        const data = await bookService.createNewBook(req.body)
+
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Book created successfully",
+                data: data
+            })
+        } else {
+            return res.status(500).send({
+                success: false,
+                message: "Unknown error occured",
+            })
+        }
+    }
+
+    async getAllBooks(req, res) {
+        let pagination = req.params.pagination;
+
+        const data = await bookService.getAllBooks(pagination);
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Books acquired successfully",
+                data: data
+            })
+        } else {
+            return res.status(404).send({
+                success: false,
+                message: "Books not found",
+            })
+        }
+    }
+
+    async getBook(req, res) {
+        let bookId = req.params.bookId;
+
+        const data = await bookService.getBook(bookId);
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Book acquired successfully",
+                data: data
+            })
+        } else {
+            return res.status(404).send({
+                success: false,
+                message: "Book not found",
+            })
+        }
+    }
+
+    async getBooksByCategory(req, res) {
+        let category = req.params.category;
+        let pagination = req.params.pagination;
+
+        const data = await bookService.getBooksByCategory(pagination);
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Books acquired successfully",
+                data: data
+            })
+        } else {
+            return res.status(404).send({
+                success: false,
+                message: "Books not found",
+            })
+        }
+    }
+
+    async findBoookByTitle(req, res) {
+        let bookTitle = req.params.bookTitle;
+
+        const data = await bookService.findBooksByTitle(bookTitle);
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Books found successfully",
+                data: data
+            })
+        } else {
+            return res.status(404).send({
+                success: false,
+                message: "Book not found",
+            })
+        }
+    }
+
+    async updateBook(req, res) {
+        let bookUpdate = req.body;
+        let bookId = req.param.bookId;
+
+        const data = await bookService.updateBook(bookId, bookUpdate);
+
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Book updated successfully",
+                data: data
+            })
+        } else {
+            return res.status(500).send({
+                success: false,
+                message: "Unknown error occured",
+            })
+        }
+    }
+
+    async deleteBook(req, res) {
+        let bookId = req.params.bookId;
+
+        const data = await bookService.deleteBook(bookId);
+
+        if (data) {
+            return res.status(200).send({
+                success: true,
+                message: "Book deleted successfully",
+                data: data
+            })
+        } else {
+            return res.status(500).send({
+                success: false,
+                message: "Unknown error occured",
+            })
+        }
+    }
+
 }
 
 module.exports = new BookController();

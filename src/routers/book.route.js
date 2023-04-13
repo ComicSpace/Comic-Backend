@@ -6,16 +6,16 @@ const { CreateBookSchema, getBooksByCategoryIdSchema, findBookByTitleSchema, upd
 const bookRouter = express.Router();
 
 //create a book
-bookRouter.post("/", [validator(CreateBookSchema)], bookController.create);
+bookRouter.post("/", [validator(CreateBookSchema)], bookController.createBook);
 
 //get all books
-bookRouter.get("/", bookController.getAllBooks);
+bookRouter.get("/:pagination", bookController.getAllBooks);
 
 //get one book
 bookRouter.get("/:bookId", [validator(bookIdSchema)], bookController.getBook);
 
 //get all books under a particular category
-bookRouter.get("/:categoryId", [validator(getBooksByCategoryIdSchema)], bookController.getBooksByCategory);
+bookRouter.get("/:categoryId/:pagination", [validator(getBooksByCategoryIdSchema)], bookController.getBooksByCategory);
 
 //search for book
 bookRouter.get("/:bookTitle", [validator(findBookByTitleSchema)], bookController.findBookByTitle);
