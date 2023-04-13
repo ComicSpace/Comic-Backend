@@ -12,4 +12,4 @@ class CategoryController {
        }
 }
 
-module.exports = CategoryController;
+module.exports = new CategoryController();
