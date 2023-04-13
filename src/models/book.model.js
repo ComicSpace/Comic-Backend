@@ -28,9 +28,11 @@ const bookSchema = new Schema(
     },
     coverImageUrl: {
       type: String,
-      required: true,
       trim: true,
-      unique: true,
+    },
+    bookLocationUrl: {
+      type: String,
+      trim: true,
     },
     pages: [
       {
