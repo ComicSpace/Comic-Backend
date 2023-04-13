@@ -46,6 +46,11 @@ const bookSchema = new Schema(
       required: true,
       ref: "Category",
     },
+    deleted: {
+      type: Boolean,
+      default: false,
+      select: false
+    }
   },
   { timestamps: true }
 );
