@@ -19,7 +19,7 @@ class BookController {
     }
 
     async getAllBooks(req, res) {
-        let pagination = req.params.pagination;
+        let pagination = req.params.pagination * 10 - 1;
 
         const data = await bookService.getAllBooks(pagination);
         if (data) {
@@ -56,9 +56,9 @@ class BookController {
 
     async getBooksByCategory(req, res) {
         let category = req.params.category;
-        let pagination = req.params.pagination;
+        let pagination = req.params.pagination * 10 - 1;
 
-        const data = await bookService.getBooksByCategory(pagination);
+        const data = await bookService.getBooksByCategory(category, pagination);
         if (data) {
             return res.status(200).send({
                 success: true,

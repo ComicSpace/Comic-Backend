@@ -18,7 +18,7 @@ bookRouter.get("/:bookId", [validator(bookIdSchema)], bookController.getBook);
 bookRouter.get("/:categoryId/:pagination", [validator(getBooksByCategoryIdSchema)], bookController.getBooksByCategory);
 
 //search for book
-bookRouter.get("/:bookTitle", [validator(findBookByTitleSchema)], bookController.findBookByTitle);
+bookRouter.get("/:bookTitle", [validator(findBookByTitleSchema)], bookController.findBoookByTitle);
 
 //update book info
 bookRouter.patch("/:bookId", [validator(updateBookSchema)], bookController.updateBook);
