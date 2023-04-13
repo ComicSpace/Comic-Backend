@@ -3,12 +3,9 @@ const categoryController = require("../controllers/category.controller");
 const validator = require("../middlewares/validator.middleware");
 const { CreateCategorySchema } = require("../schemas/category.schemas");
 
-const categoryRouter = new express.Router();
+const categoryRouter = express.Router();
 
-categoryRouter.post(
-  "/",
-  [validator(CreateCategorySchema)],
-  categoryController.create
+categoryRouter.post("/",[validator(CreateCategorySchema)],categoryController.create
 );
 
 module.exports = categoryRouter;

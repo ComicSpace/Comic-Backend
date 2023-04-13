@@ -14,7 +14,7 @@ const categorySchema = new Schema(
   { timestamps: true }
 );
 
-categorySchema.virtual("posts", {
+categorySchema.virtual("books", {
   ref: "Book",
   localField: "_id",
   foreignField: "category",
