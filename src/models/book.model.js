@@ -29,18 +29,22 @@ const bookSchema = new Schema(
     coverImageUrl: {
       type: String,
       trim: true,
+      required: true,
     },
-    bookLocationUrl: {
-      type: String,
+    publishingDate: {
+      type: Date,
       trim: true,
     },
-    pages: [
-      {
-        type: String,
-        required: true,
-        trim: true,
-      },
-    ],
+    filename: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    filepath: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     category: {
       type: ObjectId,
       required: true,

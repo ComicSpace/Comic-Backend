@@ -1,12 +1,13 @@
 const express = require("express");
 const bookController = require("../controllers/book.controller");
 const validator = require("../middlewares/validator.middleware");
+const {upload} = require("../config/multer.config");
 const { CreateBookSchema, getBooksByCategoryIdSchema, findBookByTitleSchema, updateBookSchema, bookIdSchema } = require("../schemas/book.schemas");
 
 const bookRouter = express.Router();
 
 //create a book
-bookRouter.post("/", [validator(CreateBookSchema)], bookController.createBook);
+bookRouter.post("/", upload.single("pdf"), [validator(CreateBookSchema)], bookController.createBook);
 
 //get all books
 bookRouter.get("/:pagination", bookController.getAllBooks);
@@ -19,6 +20,8 @@ bookRouter.get("/:categoryId/:pagination", [validator(getBooksByCategoryIdSchema
 
 //search for book
 bookRouter.get("/:bookTitle", [validator(findBookByTitleSchema)], bookController.findBoookByTitle);
+
+bookRouter.get("/:download/:id", [validator(bookIdSchema)], bookController.download);
 
 //update book info
 bookRouter.patch("/:bookId", [validator(updateBookSchema)], bookController.updateBook);
