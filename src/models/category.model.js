@@ -13,6 +13,12 @@ const categorySchema = new Schema(
   { timestamps: true }
 );
 
+categorySchema.virtual("posts", {
+  ref: "Book",
+  localField: "_id",
+  foreignField: "category",
+});
+
 categorySchema.set("toJSON", {
   versionKey: false,
 
