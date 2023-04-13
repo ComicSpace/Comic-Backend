@@ -8,6 +8,7 @@ const categorySchema = new Schema(
       default: "Adult",
       required: true,
       trim: true,
+      unique: true,
     },
   },
   { timestamps: true }
