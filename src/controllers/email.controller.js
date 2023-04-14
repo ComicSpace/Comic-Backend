@@ -17,7 +17,7 @@ class EmailController {
             })
         } else {
             return res.status(500).send({
-                success: true,
+                success: false,
                 message: "Unknown error occured",
             })
         }

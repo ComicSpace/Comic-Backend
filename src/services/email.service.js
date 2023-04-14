@@ -22,8 +22,9 @@ class EmailService {
 
             //each attachment you create requires an Id, which you can reference in the email body later on. See example above in html1 variable
             attachments: [{
-                filename: 'img1.jpg',
+                filename: `${comicBookName} cover page`,
                 path: previewImageLink,
+                // path: './cover-pages/img1.jpg',
                 cid: 'comicImagePreview'
             },
                 // {
@@ -38,7 +39,7 @@ class EmailService {
         console.log(info.accepted);
         console.log(info.rejected);
 
-        if (info.rejected == []) {
+        if (info.rejected.length < 1) {
             return true;
         } else {
             return false;
@@ -70,6 +71,7 @@ class EmailService {
 </html>
 `;
 
+        //returns true or false
         return await this.nodeMailerFunction(comicBookName, customerEmail, emailHTMLBody, previewImageLink);
     }
 
