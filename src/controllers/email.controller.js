@@ -5,7 +5,7 @@ class EmailController {
         let customerName = req.body.customerName;
         let comicBookName = req.body.comicBookName;
         let downloadLink = req.body.downloadLink;
-        let previewImageLink = req.body.previewImageLink;
+        let previewImageLink = req.body.coverImageUrl;
         let customerEmail = req.body.customerEmail;
 
 

@@ -5,30 +5,26 @@ exports.sendDownloadLinkToCustomerAfterPurchaseSchema = Joi.object({
         .min(3)
         .max(200)
         .required()
-        .trim()
-        .lowercase(),
+        .trim(),
 
     comicBookName: Joi.string()
+    
         .min(3)
         .max(200)
         .required()
-        .trim()
-        .lowercase(),
+        .trim(),
 
     downloadLink: Joi.string()
         .min(5)
-        .max(250)
         .required()
         .trim()
         .lowercase(),
 
 
-    previewImageLink: Joi.string()
+    coverImageUrl: Joi.string()
         .min(5)
-        .max(250)
         .required()
-        .trim()
-        .lowercase(),
+        .trim(),
 
 
     customerEmail: Joi.string()
