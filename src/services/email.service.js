@@ -59,13 +59,11 @@ class EmailService {
     <h1>Congratulations on Your Comic Book Purchase!</h1>
     <p>Dear ${customerName},</p>
     <p>Thank you for purchasing the <strong>${comicBookName}</strong> comic book from us. We hope you enjoy reading it as much as we enjoyed providing it for you.</p>
-    <p>Please click the following link to download your copy:</p>
+    <p>Please click the link below to download your book:</p>
     <a href="${downloadLink}">Download ${comicBookName}</a>
     <br>
     <img src="${previewImageLink}" alt="${comicBookName} Cover Page">
-    <p>If you have any questions or concerns about your purchase, please don't hesitate to contact us.</p>
-    <p>Sincerely,</p>
-    <p>The ComicSpace Team</p>
+    <p>For any questions or concerns about your purchase, please contact us.</p>
   </body>
 </html>
 `;
