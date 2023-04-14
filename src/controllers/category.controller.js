@@ -10,6 +10,15 @@ class CategoryController {
          data: newController
         })
        }
+    async getCategories (req, res) {
+        const categories = await categoryService.getCategories()
+     
+        return res.status(200).send({
+         success: true,
+         message: "Categories fetched successfully",
+         data: categories
+        })
+       }
 }
 
 module.exports = new CategoryController();

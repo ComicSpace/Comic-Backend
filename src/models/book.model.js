@@ -19,33 +19,37 @@ const bookSchema = new Schema(
       maxlength: 1000,
       trim: true,
     },
-    author: {
-      type: String,
-      required: true,
-      minlength: 3,
-      maxlength: 100,
-      trim: true,
-    },
+    
     coverImageUrl: {
       type: String,
       trim: true,
+      required: true,
     },
-    bookLocationUrl: {
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: true
+  },
+    filename: {
       type: String,
       trim: true,
+      required: true,
     },
-    pages: [
-      {
-        type: String,
-        required: true,
-        trim: true,
-      },
-    ],
+    filepath: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     category: {
       type: ObjectId,
       required: true,
       ref: "Category",
     },
+    deleted: {
+      type: Boolean,
+      default: false,
+      select: false
+    }
   },
   { timestamps: true }
 );

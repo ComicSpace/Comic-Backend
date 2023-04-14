@@ -8,6 +8,12 @@ class CategoryService {
 
         return category;
     }
+
+    async getCategories() {
+        const category = await Category.find({deleted: false});
+
+        return category;
+    }
 }
 
 module.exports = new CategoryService();
