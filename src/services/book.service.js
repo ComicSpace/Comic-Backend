@@ -4,17 +4,15 @@ const Category = require("../models/category.model");
 class BookService {
   async createNewBook(data) {
     const book = new Book(data);
-    // return await Book.create(data);
+    
     await book.save();
-    console.log("dataservice", book);
+  
     return book;
-    // console.log(book, "books");
+    
   }
 
-  async getAllBooks() {
-    return await Book.find({ deleted: false })
-      // .limit(10)
-      // .skip(pagination)
+  async getAllBooks(filter = {}) {
+    return await Book.find({ ...filter, deleted: false })
       // .sort({ 'createdAt': 'desc' })
       .populate("category");
     // .select('-__v ');
@@ -31,7 +29,7 @@ class BookService {
   async getBook(bookId) {
     return await Book.findOne({ _id: bookId, deleted: false })
       // .populate('category')
-      .select("-__v ");
+      // .select("-__v ");
   }
 
   async getBooksByCategory(category) {
@@ -68,7 +66,7 @@ class BookService {
   async findBookByTitle(bookTitle) {
     return await Book.findOne({ title: bookTitle, deleted: false })
       .populate("category")
-      .select("-__v ");
+      // .select("-__v ");
   }
 
   async updateBook(bookId, bookUpdate) {
@@ -76,7 +74,7 @@ class BookService {
       new: true,
     })
       .populate("category")
-      .select("-__v ");
+      // .select("-__v ");
   }
 
   async deleteBook(bookId) {
@@ -89,7 +87,7 @@ class BookService {
         { new: true }
       )
         .populate("category")
-        .select("-__v ");
+        // .select("-__v ");
     } else {
       return null;
     }
