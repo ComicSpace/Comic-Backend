@@ -12,10 +12,10 @@ bookRouter.post("/", upload.single("filepath"), [validator(CreateBookSchema)], b
 //get all books
 bookRouter.get("/", bookController.getAllBooks);
 
+bookRouter.get("/download/:id", bookController.downloadBook);
 //get one book
 bookRouter.get("/:bookId",  bookController.getBook);
 
-bookRouter.get("/download/:id", bookController.downloadBook);
 //get all books under a particular category
 bookRouter.get("/:categoryId", [validator(getBooksByCategoryIdSchema)], bookController.getBooksByCategory);
 

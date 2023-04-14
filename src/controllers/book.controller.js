@@ -5,7 +5,7 @@ class BookController {
   async createBook(req, res) {
     const { originalname, filename } = req.file;
     // const filepath = path.join("../uploads", filename);
-    const filepath = path.join("__dirname, ../../uploads", filename);
+    const filepath = path.join("../../uploads", filename);
     // return res.send(filepath)
     const data = await bookService.createNewBook({
       ...req.body,
@@ -31,8 +31,13 @@ class BookController {
 
   async getAllBooks(req, res) {
     // let pagination = req.params.pagination * 10 - 1;
+    let category = req?.query?.category;
+    const filter = {}
 
-    const data = await bookService.getAllBooks();
+    if (category) {
+      filter.category = category;
+    }
+    const data = await bookService.getAllBooks(filter);
     if (data) {
       return res.status(200).send({
         success: true,
@@ -84,14 +89,14 @@ class BookController {
 
   async downloadBook(req, res) {
     let bookId = req.params.id;
-
+    
     const data = await bookService.getBook(bookId);
-    console.log(data, bookId);
-
+    
     const filepath = data.filepath;
+    // return res.send(filepath)
 
     if (data) {
-      return res.sendFile(filepath, { root: __dirname });
+      return res.sendFile(path.join(__dirname, data.filepath));
       //   return res.status(200).sendFile({
       //     success: true,
       //     message: "Book downloaded successfully",
@@ -107,7 +112,7 @@ class BookController {
   }
 
   async getBooksByCategory(req, res) {
-    let category = req.params.id;
+    let category = req.query.category;
 
     const data = await bookService.getBooksByCategory(category);
     if (data) {
