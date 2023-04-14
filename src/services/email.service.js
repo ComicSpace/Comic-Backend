@@ -21,17 +21,17 @@ class EmailService {
             html: emailHTMLBody,
 
             //each attachment you create requires an Id, which you can reference in the email body later on. See example above in html1 variable
-            attachments: [{
-                filename: `${comicBookName} cover page`,
-                path: previewImageLink,
-                // path: './cover-pages/img1.jpg',
-                cid: 'comicImagePreview'
-            },
-                // {
-                //     filename: 'img1.png',
-                //     path: './img1.png'
-                // }
-            ]
+            // attachments: [{
+            //     filename: `${comicBookName} cover page`,
+            //     path: previewImageLink,
+            //     // path: './cover-pages/img1.jpg',
+            //     cid: 'comicImagePreview'
+            // },
+            //     // {
+            //     //     filename: 'img1.png',
+            //     //     path: './img1.png'
+            //     // }
+            // ]
         });
 
         //Displays info about mails sent, successful and failed.
