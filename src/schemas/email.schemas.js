@@ -1,4 +1,4 @@
-const joi = require('joi')
+const Joi = require('joi')
 
 exports.sendDownloadLinkToCustomerAfterPurchaseSchema = Joi.object({
     customerName: Joi.string()
@@ -31,7 +31,7 @@ exports.sendDownloadLinkToCustomerAfterPurchaseSchema = Joi.object({
         .lowercase(),
 
 
-    customerEmail: joi.string()
+    customerEmail: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
         .required()
         .trim()
