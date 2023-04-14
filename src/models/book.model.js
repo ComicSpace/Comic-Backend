@@ -19,22 +19,17 @@ const bookSchema = new Schema(
       maxlength: 1000,
       trim: true,
     },
-    author: {
-      type: String,
-      required: true,
-      minlength: 3,
-      maxlength: 100,
-      trim: true,
-    },
+    
     coverImageUrl: {
       type: String,
       trim: true,
       required: true,
     },
-    publishingDate: {
-      type: Date,
-      trim: true,
-    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: true
+  },
     filename: {
       type: String,
       trim: true,
