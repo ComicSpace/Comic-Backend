@@ -2,9 +2,14 @@ const emailService = require("../services/email.service");
 
 class EmailController {
     async sendDownloadLink(req, res) {
-        emailVariables = req.body;
+        let customerName = req.body.customerName;
+        let comicBookName = req.body.comicBookName;
+        let downloadLink = req.body.downloadLink;
+        let previewImageLink = req.body.previewImageLink;
+        let customerEmail = req.body.customerEmail;
 
-        const status = await emailService.sendEmail(req.body);
+
+        const status = await emailService.sendEmail(customerName, comicBookName, downloadLink, previewImageLink, customerEmail);
         if (status) {
             return res.status(200).send({
                 success: true,

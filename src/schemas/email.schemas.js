@@ -7,15 +7,15 @@ exports.sendDownloadLinkToCustomerAfterPurchaseSchema = Joi.object({
         .required()
         .trim()
         .lowercase(),
-        
-        comicBookName: Joi.string()
+
+    comicBookName: Joi.string()
         .min(3)
         .max(200)
         .required()
         .trim()
         .lowercase(),
 
-        downloadLink: Joi.string()
+    downloadLink: Joi.string()
         .min(5)
         .max(250)
         .required()
@@ -23,7 +23,7 @@ exports.sendDownloadLinkToCustomerAfterPurchaseSchema = Joi.object({
         .lowercase(),
 
 
-        previewImageLink: Joi.string()
+    previewImageLink: Joi.string()
         .min(5)
         .max(250)
         .required()
@@ -31,7 +31,7 @@ exports.sendDownloadLinkToCustomerAfterPurchaseSchema = Joi.object({
         .lowercase(),
 
 
-        customerEmail: joi.string()
+    customerEmail: joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
         .required()
         .trim()
