@@ -10,7 +10,7 @@ class CategoryService {
     }
 
     async getCategories() {
-        const category = await Category.find({deleted: false});
+        const category = await Category.find();
 
         return category;
     }
